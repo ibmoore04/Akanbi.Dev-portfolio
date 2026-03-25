@@ -100,7 +100,6 @@
           color 0.2s ease;
       }
 
-      /* animated gradient bg */
       body::before {
         content: "";
         position: fixed;
@@ -151,19 +150,31 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 0;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        gap: 1rem;
       }
 
+      /* ===== FIX: LOGO NO WRAP, NO OVERFLOW ===== */
       .logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 800;
         background: linear-gradient(135deg, #00e0ff, #a855f7);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.3px;
         text-decoration: none;
         transition: transform 0.2s;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* on extremely tiny screens, slightly reduce font but keep on one line */
+      @media (max-width: 480px) {
+        .logo {
+          font-size: 1.3rem;
+          letter-spacing: -0.2px;
+        }
       }
 
       .logo:hover {
@@ -176,6 +187,7 @@
         list-style: none;
         transition: all 0.3s;
         align-items: center;
+        margin-left: auto;
       }
 
       .nav-links a {
@@ -222,7 +234,7 @@
         transition: all 0.3s ease;
         font-size: 1.3rem;
         color: #00e0ff;
-        margin-left: 0.5rem;
+        flex-shrink: 0;
       }
 
       .theme-toggle:hover {
@@ -236,9 +248,10 @@
         font-size: 1.8rem;
         cursor: pointer;
         color: #00e0ff;
+        flex-shrink: 0;
       }
 
-      /* ===== ANIMATED WHATSAPP ICON STYLES - RIGHT SIDE ===== */
+      /* ===== WHATSAPP ICON STYLES ===== */
       .whatsapp-float {
         position: fixed;
         bottom: 30px;
@@ -275,7 +288,6 @@
         transform: rotate(8deg) scale(1.05);
       }
 
-      /* Pulse Animation */
       @keyframes whatsappPulse {
         0% {
           box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
@@ -290,7 +302,6 @@
         }
       }
 
-      /* Floating Animation */
       @keyframes whatsappFloat {
         0% {
           transform: translateY(0px);
@@ -305,7 +316,6 @@
         }
       }
 
-      /* Tooltip for WhatsApp - positioned to the left since icon is on right */
       .whatsapp-tooltip {
         position: absolute;
         right: 80px;
@@ -332,7 +342,6 @@
         transform: translateX(-5px);
       }
 
-      /* Responsive adjustments for WhatsApp icon on right side */
       @media (max-width: 768px) {
         .whatsapp-float {
           bottom: 20px;
@@ -475,7 +484,6 @@
         transition: 0.3s;
       }
 
-      /* section titles */
       .section-title {
         font-size: 2.5rem;
         margin: 2rem 0 2rem;
@@ -487,7 +495,7 @@
         letter-spacing: -0.5px;
       }
 
-      /* NEW CARD STYLES FOR ADDED SECTIONS (no overflow, responsive) */
+      /* card styles */
       .extra-card {
         background: var(--bg-secondary);
         backdrop-filter: blur(4px);
@@ -526,13 +534,6 @@
         transition: all 0.2s;
       }
 
-      .testi-item i,
-      .service-item i {
-        font-size: 2rem;
-        color: #00e0ff;
-        margin-bottom: 1rem;
-      }
-
       .stats-row {
         display: flex;
         flex-wrap: wrap;
@@ -558,7 +559,7 @@
         color: #00e0ff;
       }
 
-      /* about wrapper + new sections spacing */
+      /* about wrapper */
       .about-wrapper {
         background: var(--bg-secondary);
         backdrop-filter: blur(4px);
@@ -566,7 +567,6 @@
         padding: 2rem;
         border: 1px solid var(--border-color);
         margin-bottom: 2rem;
-        transition: background 0.3s ease;
       }
 
       .about-grid {
@@ -579,13 +579,6 @@
       .about-text-block {
         flex: 1.2;
         min-width: 240px;
-      }
-
-      .about-text-block p {
-        margin-bottom: 1.2rem;
-        line-height: 1.6;
-        color: var(--text-secondary);
-        font-size: 1rem;
       }
 
       .skills-block {
@@ -611,7 +604,6 @@
         justify-content: space-between;
         margin-bottom: 0.5rem;
         font-weight: 500;
-        color: var(--text-primary);
       }
 
       .skill-bar {
@@ -659,22 +651,8 @@
         transition: transform 0.5s;
       }
 
-      .project-card:hover .project-img {
-        transform: scale(1.03);
-      }
-
       .project-info {
         padding: 1.5rem;
-      }
-
-      .project-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.7rem;
-        color: var(--text-primary);
-      }
-
-      .project-info p {
-        color: var(--text-secondary);
       }
 
       .project-tech {
@@ -693,16 +671,11 @@
         color: #7bc5ff;
       }
 
-      body.light-theme .tech-tag {
-        background: rgba(0, 100, 150, 0.1);
-        color: #0088cc;
-      }
-
-      /* contact section */
+      /* ===== FIXED CONTACT SECTION: ALIGNMENT ON MOBILE ===== */
       .contact-content {
         display: flex;
         flex-wrap: wrap;
-        gap: 3rem;
+        gap: 2.5rem;
         background: var(--contact-bg);
         border-radius: 32px;
         padding: 2rem;
@@ -714,7 +687,23 @@
       .contact-info,
       .contact-form {
         flex: 1;
-        min-width: 250px;
+        min-width: 260px;
+      }
+
+      /* ensure vertical alignment inside contact-info */
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #fff, #7bc5ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .contact-info p {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
       }
 
       .contact-item {
@@ -722,6 +711,7 @@
         gap: 1rem;
         margin: 1.5rem 0;
         align-items: center;
+        flex-wrap: wrap;
       }
 
       .contact-icon {
@@ -734,8 +724,20 @@
         justify-content: center;
         font-size: 1.5rem;
         color: #00e0ff;
+        flex-shrink: 0;
       }
 
+      .contact-item div:last-child h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .contact-item div:last-child p {
+        margin: 0;
+        word-break: break-word;
+      }
+
+      /* Form improvements */
       .form-group {
         margin-bottom: 1.2rem;
       }
@@ -795,7 +797,6 @@
         color: var(--text-secondary);
       }
 
-      /* animations */
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -822,7 +823,7 @@
         }
       }
 
-      /* responsive */
+      /* responsive overrides */
       @media (max-width: 850px) {
         .menu-toggle {
           display: block;
@@ -842,6 +843,7 @@
           clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
           transition: clip-path 0.4s ease;
           z-index: 999;
+          margin-left: 0;
         }
 
         .nav-links.active {
@@ -869,10 +871,6 @@
         .about-wrapper {
           padding: 1.5rem;
         }
-
-        .theme-toggle {
-          margin-left: 0;
-        }
       }
 
       @media (max-width: 650px) {
@@ -886,7 +884,8 @@
         }
 
         .contact-content {
-          padding: 1.2rem;
+          padding: 1.5rem;
+          gap: 2rem;
         }
 
         .section-title {
@@ -899,7 +898,28 @@
 
         nav {
           flex-wrap: nowrap;
-          justify-content: space-between;
+        }
+      }
+
+      /* extra small devices: contact alignment improvement */
+      @media (max-width: 550px) {
+        .contact-item {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .contact-info p {
+          font-size: 0.95rem;
+        }
+
+        .contact-icon {
+          width: 42px;
+          height: 42px;
+          font-size: 1.2rem;
+        }
+
+        .contact-content {
+          padding: 1.2rem;
         }
       }
 
@@ -916,7 +936,6 @@
         border-radius: 10px;
       }
 
-      /* page transition fade */
       .page {
         display: none;
         animation: fadeInPage 0.4s ease;
@@ -941,7 +960,6 @@
   </head>
 
   <body>
-    <!-- ANIMATED WHATSAPP FLOATING ICON - RIGHT SIDE -->
     <a
       href="https://wa.me/2347053357203?text=Hello%20Akanbi%2C%20I%27m%20interested%20in%20working%20with%20you!"
       class="whatsapp-float"
@@ -985,7 +1003,7 @@
       </div>
     </header>
 
-    <!-- HOME PAGE (ADDED STATS & TESTIMONIALS SECTIONS) -->
+    <!-- HOME PAGE -->
     <div id="home-page" class="page active-page">
       <section class="hero">
         <div class="container">
@@ -1010,12 +1028,15 @@
                 src="./real-ibrahim.jpg"
                 alt="Developer Profile"
                 class="profile-img"
+                onerror="
+                  this.src =
+                    'https://placehold.co/400x400/111a2a/00e0ff?text=AK'
+                "
               />
             </div>
           </div>
         </div>
       </section>
-      <!-- ADDITIONAL SECTION 1: STATISTICS -->
       <div class="container">
         <div class="extra-card">
           <h3>Impact by Numbers</h3>
@@ -1038,7 +1059,6 @@
             </div>
           </div>
         </div>
-        <!-- ADDITIONAL SECTION 2: TESTIMONIALS -->
         <div class="extra-card">
           <h3>What Clients Say</h3>
           <div class="testimonial-grid">
@@ -1071,7 +1091,7 @@
       </div>
     </div>
 
-    <!-- ABOUT PAGE (ADDED SERVICES & TIMELINE SECTIONS) -->
+    <!-- ABOUT PAGE (unchanged but kept functional) -->
     <div id="about-page" class="page">
       <div class="container">
         <h2 class="section-title">About Me</h2>
@@ -1087,8 +1107,7 @@
               <p>
                 My approach combines technical expertise with creative
                 problem-solving to deliver efficient, scalable, and
-                user-friendly solutions. I enjoy turning complex problems into
-                simple, beautiful designs.
+                user-friendly solutions.
               </p>
               <p>
                 When I'm not coding, you can find me hiking, reading tech blogs,
@@ -1144,39 +1163,31 @@
             </div>
           </div>
         </div>
-        <!-- NEW SECTION: Services I Offer -->
         <div class="extra-card">
           <h3>Services I Provide</h3>
           <div class="services-grid">
             <div class="service-item">
               <i class="fas fa-code"></i>
               <h4>Web Development</h4>
-              <p>
-                Full-stack web apps with modern frameworks (React, Vue, Node).
-              </p>
+              <p>Full-stack web apps with modern frameworks.</p>
             </div>
             <div class="service-item">
               <i class="fas fa-mobile-alt"></i>
               <h4>Responsive Design</h4>
-              <p>
-                Pixel-perfect, mobile-first interfaces that adapt to any screen.
-              </p>
+              <p>Pixel-perfect, mobile-first interfaces.</p>
             </div>
             <div class="service-item">
               <i class="fas fa-database"></i>
               <h4>API Integration</h4>
-              <p>
-                RESTful APIs, third-party services and database architecture.
-              </p>
+              <p>RESTful APIs, third-party services.</p>
             </div>
             <div class="service-item">
               <i class="fas fa-chart-line"></i>
               <h4>Performance Optimization</h4>
-              <p>Boost loading speed and SEO for higher conversion rates.</p>
+              <p>Boost loading speed and SEO.</p>
             </div>
           </div>
         </div>
-        <!-- NEW SECTION: Career timeline -->
         <div class="extra-card">
           <h3>Career Snapshot</h3>
           <div style="display: flex; flex-direction: column; gap: 1rem">
@@ -1208,7 +1219,7 @@
       </div>
     </div>
 
-    <!-- PROJECTS PAGE (ADDED MORE PROJECTS + SKILL HIGHLIGHT) -->
+    <!-- PROJECTS PAGE (condensed) -->
     <div id="projects-page" class="page">
       <div class="container">
         <h2 class="section-title">My Projects</h2>
@@ -1216,7 +1227,6 @@
           <div class="project-card">
             <img
               src="./animate-cart.jpg.png"
-              alt="AnimateCart"
               class="project-img"
               onerror="
                 this.src =
@@ -1225,15 +1235,11 @@
             />
             <div class="project-info">
               <h3>AnimateCart Website</h3>
-              <p>
-                A full-featured e-commerce website with user authentication,
-                product management, and payment integration.
-              </p>
+              <p>Full-featured e-commerce with auth and payments.</p>
               <div class="project-tech">
                 <span class="tech-tag">React</span
                 ><span class="tech-tag">Node.js</span
-                ><span class="tech-tag">MongoDB</span
-                ><span class="tech-tag">Stripe API</span>
+                ><span class="tech-tag">MongoDB</span>
               </div>
               <a
                 href="https://ibmoore04.github.io/AnimateCart/"
@@ -1246,24 +1252,19 @@
           <div class="project-card">
             <img
               src="./delici-screenshot.jpg.png"
-              alt="Delici Restaurant"
               class="project-img"
               onerror="
                 this.src =
-                  'https://placehold.co/600x400/111a2a/66ccff?text=Delici+Restaurant'
+                  'https://placehold.co/600x400/111a2a/66ccff?text=Delici'
               "
             />
             <div class="project-info">
               <h3>Luxurious Restaurant App</h3>
-              <p>
-                A fully responsive restaurant website with smooth animations and
-                interactive UI.
-              </p>
+              <p>Responsive restaurant website with animations.</p>
               <div class="project-tech">
                 <span class="tech-tag">Vue.js</span
                 ><span class="tech-tag">Express</span
-                ><span class="tech-tag">Socket.io</span
-                ><span class="tech-tag">PostgreSQL</span>
+                ><span class="tech-tag">Socket.io</span>
               </div>
               <a
                 href="https://ibmoore04.github.io/DELICI-RESTAURANT/"
@@ -1276,7 +1277,6 @@
           <div class="project-card">
             <img
               src="./veloz.port.jpg.png"
-              alt="Veloz Cars"
               class="project-img"
               onerror="
                 this.src =
@@ -1285,15 +1285,11 @@
             />
             <div class="project-info">
               <h3>Veloz Cars App</h3>
-              <p>
-                Modern car dealership experience, built with HTML, CSS,
-                Bootstrap, and JavaScript.
-              </p>
+              <p>Modern car dealership experience.</p>
               <div class="project-tech">
                 <span class="tech-tag">JavaScript</span
                 ><span class="tech-tag">CSS Grid</span
-                ><span class="tech-tag">Bootstrap</span
-                ><span class="tech-tag">Local Storage</span>
+                ><span class="tech-tag">Bootstrap</span>
               </div>
               <a
                 href="https://ibmoore04.github.io/Veloz-cars/"
@@ -1304,7 +1300,6 @@
             </div>
           </div>
         </div>
-        <!-- ADDITIONAL SECTION: MORE PROJECTS / BLOG & OPEN SOURCE -->
         <div class="extra-card">
           <h3>Open Source Contributions</h3>
           <div
@@ -1314,32 +1309,19 @@
             <div class="service-item">
               <i class="fab fa-github-alt"></i>
               <h4>React UI Library</h4>
-              <p>Contributed accessible components used by 200+ developers.</p>
+              <p>Accessible components used by 200+ devs.</p>
             </div>
             <div class="service-item">
               <i class="fas fa-code-branch"></i>
               <h4>Node.js Auth Middleware</h4>
-              <p>Open-source JWT authentication package with 150+ stars.</p>
-            </div>
-            <div class="service-item">
-              <i class="fas fa-cloud-upload-alt"></i>
-              <h4>Deployment Scripts</h4>
-              <p>Automated VPS deployment tools for MERN stack.</p>
+              <p>JWT auth package with 150+ stars.</p>
             </div>
           </div>
-        </div>
-        <div class="extra-card">
-          <h3>Upcoming Project: AI Analytics Dashboard</h3>
-          <p>
-            Currently building a real-time analytics platform using Next.js,
-            Tailwind, and Python Flask. Beta launch expected Q3 2026. Stay
-            tuned!
-          </p>
         </div>
       </div>
     </div>
 
-    <!-- CONTACT PAGE (ADDED FAQ / BUSINESS HOURS & SOCIAL REACH) -->
+    <!-- CONTACT PAGE - FIXED ALIGNMENT (Get in touch section well aligned) -->
     <div id="contact-page" class="page">
       <div class="container">
         <h2 class="section-title">Contact Me</h2>
@@ -1421,7 +1403,6 @@
             </form>
           </div>
         </div>
-        <!-- ADDITIONAL SECTION: FREQUENTLY ASKED QUESTIONS -->
         <div class="extra-card">
           <h3>Quick Answers</h3>
           <div style="display: flex; flex-direction: column; gap: 1rem">
@@ -1461,7 +1442,7 @@
         <a
           href="#"
           class="logo"
-          style="display: inline-block; margin-left: 10px"
+          style="display: inline-block; margin: 0 10px 10px 0"
           data-nav="home"
           >Akanbi. Portfolio</a
         >
@@ -1491,8 +1472,8 @@
 
     <script>
       (function () {
-        const themeToggle = document.getElementById("themeToggle");
-        const themeIcon = document.getElementById("themeIcon");
+        const themeToggle = document.getElementById("themeToggle"),
+          themeIcon = document.getElementById("themeIcon");
         const savedTheme = localStorage.getItem("portfolio-theme");
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
@@ -1515,21 +1496,21 @@
         else if (!prefersDark) setTheme("light");
         else setTheme("dark");
         themeToggle.addEventListener("click", () => {
-          const isLight = document.body.classList.contains("light-theme");
-          setTheme(isLight ? "dark" : "light");
+          setTheme(
+            document.body.classList.contains("light-theme") ? "dark" : "light",
+          );
         });
-
         const pages = {
           home: document.getElementById("home-page"),
           about: document.getElementById("about-page"),
           projects: document.getElementById("projects-page"),
           contact: document.getElementById("contact-page"),
         };
-        const navLinks = document.querySelectorAll(".nav-link");
-        const logoLinks = document.querySelectorAll('[data-nav="home"]');
+        const navLinks = document.querySelectorAll(".nav-link"),
+          logoLinks = document.querySelectorAll('[data-nav="home"]');
         function showPage(pageId) {
-          Object.values(pages).forEach((page) => {
-            if (page) page.classList.remove("active-page");
+          Object.values(pages).forEach((p) => {
+            if (p) p.classList.remove("active-page");
           });
           if (pages[pageId]) pages[pageId].classList.add("active-page");
           navLinks.forEach((link) => {
@@ -1540,24 +1521,30 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
           if (pageId === "about")
             setTimeout(() => {
-              animateSkillBars();
+              document
+                .querySelectorAll("#about-page .skill-level")
+                .forEach((bar) => {
+                  let w = bar.getAttribute("data-width");
+                  if (w && bar.style.width !== w + "%")
+                    bar.style.width = w + "%";
+                });
             }, 200);
         }
         navLinks.forEach((link) => {
           link.addEventListener("click", (e) => {
             e.preventDefault();
-            const pageId = link.getAttribute("data-page");
-            if (pageId) {
-              showPage(pageId);
-              navLinksParent.classList.remove("active");
+            let pid = link.getAttribute("data-page");
+            if (pid) {
+              showPage(pid);
+              document.getElementById("nav-links")?.classList.remove("active");
             }
           });
         });
-        logoLinks.forEach((logo) => {
-          logo.addEventListener("click", (e) => {
+        logoLinks.forEach((l) => {
+          l.addEventListener("click", (e) => {
             e.preventDefault();
             showPage("home");
-            navLinksParent.classList.remove("active");
+            document.getElementById("nav-links")?.classList.remove("active");
           });
         });
         document.querySelectorAll("[data-page]").forEach((el) => {
@@ -1566,53 +1553,50 @@
             (el.classList.contains("btn") || el.tagName === "A")
           ) {
             el.addEventListener("click", (e) => {
-              const pageId = el.getAttribute("data-page");
-              if (pageId && pages[pageId]) {
+              let pid = el.getAttribute("data-page");
+              if (pid && pages[pid]) {
                 e.preventDefault();
-                showPage(pageId);
-                navLinksParent.classList.remove("active");
+                showPage(pid);
+                document
+                  .getElementById("nav-links")
+                  ?.classList.remove("active");
               }
             });
           }
         });
-        const menuToggle = document.getElementById("menu-toggle");
-        const navLinksParent = document.getElementById("nav-links");
+        const menuToggle = document.getElementById("menu-toggle"),
+          navParent = document.getElementById("nav-links");
         if (menuToggle)
           menuToggle.addEventListener("click", () =>
-            navLinksParent.classList.toggle("active"),
+            navParent.classList.toggle("active"),
           );
-        function animateSkillBars() {
-          const skillLevels = document.querySelectorAll(
-            "#about-page .skill-level",
-          );
-          skillLevels.forEach((bar) => {
-            const widthVal = bar.getAttribute("data-width");
-            if (widthVal && bar.style.width !== widthVal + "%") {
-              bar.style.width = widthVal + "%";
-            }
-          });
-        }
-        const aboutPage = document.getElementById("about-page");
-        const observer = new IntersectionObserver(
+        const aboutPageDiv = document.getElementById("about-page");
+        const obs = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (
                 entry.isIntersecting &&
-                aboutPage.classList.contains("active-page")
+                aboutPageDiv.classList.contains("active-page")
               ) {
-                animateSkillBars();
-                observer.unobserve(aboutPage);
+                document
+                  .querySelectorAll("#about-page .skill-level")
+                  .forEach((bar) => {
+                    let w = bar.getAttribute("data-width");
+                    if (w && bar.style.width !== w + "%")
+                      bar.style.width = w + "%";
+                  });
+                obs.unobserve(aboutPageDiv);
               }
             });
           },
           { threshold: 0.3 },
         );
-        if (aboutPage) observer.observe(aboutPage);
+        if (aboutPageDiv) obs.observe(aboutPageDiv);
         const contactForm = document.getElementById("contactForm");
         if (contactForm)
           contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            const name = document.getElementById("name").value;
+            let name = document.getElementById("name").value;
             alert(
               `✨ Thank you, ${name}! Your message has been sent. I'll get back to you soon. ✨`,
             );
@@ -1625,28 +1609,6 @@
               "0 12px 30px rgba(0,0,0,0.5), 0 0 8px rgba(0,224,255,0.2)";
           else header.style.boxShadow = "none";
         });
-        const projectObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry, idx) => {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = "0";
-                entry.target.style.transform = "translateY(30px)";
-                setTimeout(() => {
-                  entry.target.style.transition = "all 0.6s ease";
-                  entry.target.style.opacity = "1";
-                  entry.target.style.transform = "translateY(0)";
-                }, idx * 80);
-                projectObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.2 },
-        );
-        document
-          .querySelectorAll("#projects-page .project-card")
-          .forEach((card) => {
-            projectObserver.observe(card);
-          });
         const hash = window.location.hash.slice(1);
         if (hash && pages[hash]) showPage(hash);
       })();
