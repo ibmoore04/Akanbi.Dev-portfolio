@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akanbi Ibrahim CV</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #ffffff;
+      --ink: #162033;
+      --muted: #52627e;
+      --accent: #0f8bd7;
+      --accent-soft: #eaf6ff;
+      --rule: #d6e1ee;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef7ff 0%, #f9fbfe 100%);
+      line-height: 1.55;
+    }
+
+    .resume-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .resume-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .resume-topbar a,
+    .resume-topbar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.85rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .resume-topbar a.secondary {
+      background: #dcefff;
+      color: var(--ink);
+    }
+
+    .resume-paper {
+      background: var(--paper);
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(12, 37, 61, 0.12);
+      overflow: hidden;
+    }
+
+    .resume-header {
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #0f2038, #124c7f);
+      color: #fff;
+    }
+
+    .resume-header h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .resume-header p {
+      margin: 0.35rem 0;
+      max-width: 62ch;
+    }
+
+    .resume-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.4rem;
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .resume-body {
+      padding: 2rem 2.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+    }
+
+    h2 {
+      margin: 0 0 0.85rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    section + section {
+      margin-top: 1.7rem;
+    }
+
+    .summary-card {
+      background: var(--accent-soft);
+      border: 1px solid #cfe7fb;
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+    }
+
+    .resume-item {
+      padding: 0.95rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .resume-item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .resume-item h3 {
+      margin: 0 0 0.2rem;
+      font-size: 1.06rem;
+    }
+
+    .resume-meta {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 0.45rem;
+    }
+
+    ul {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 0.35rem;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .pill {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: #eff6fc;
+      border: 1px solid #d8e6f2;
+      font-size: 0.92rem;
+      color: #27415f;
+      font-weight: 600;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .resume-shell {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .resume-header,
+      .resume-body {
+        padding: 1.4rem;
+      }
+
+      .resume-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .resume-shell {
+        max-width: none;
+        padding: 0;
+      }
+
+      .resume-topbar {
+        display: none;
+      }
+
+      .resume-paper {
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resume-shell">
+    <div class="resume-topbar">
+      <a href="./index.html">Back to Portfolio</a>
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      <a class="secondary" href="./akanbi-ibrahim-cv.html" download>Download HTML Copy</a>
+    </div>
+
+    <article class="resume-paper">
+      <header class="resume-header">
+        <h1>Akanbi Ibrahim</h1>
+        <p>Full-Stack Developer focused on modern JavaScript interfaces, responsive product experiences, and clean implementation.</p>
+        <div class="resume-contact">
+          <span>Email: akanbiibrahimolatunde27@gmail.com</span>
+          <span>Phone: +2347053357203</span>
+          <span>Location: Ijebu-Ode, Ogun State, Nigeria</span>
+          <span>Portfolio: akanbi-dev-portfolio.vercel.app</span>
+        </div>
+      </header>
+
+      <div class="resume-body">
+        <div>
+          <section>
+            <h2>Profile</h2>
+            <div class="summary-card">
+              Full-stack developer with 3+ years of hands-on web development experience building responsive interfaces,
+              portfolio projects, and product-focused user experiences with JavaScript, React, Node.js, and MongoDB.
+            </div>
+          </section>
+
+          <section>
+            <h2>Experience Focus</h2>
+            <div class="resume-item">
+              <h3>Freelance and Portfolio-Focused Development</h3>
+              <div class="resume-meta">2023 - Present</div>
+              <ul>
+                <li>Built and refined landing pages, business websites, and product interface concepts.</li>
+                <li>Focused on responsive implementation, visual polish, and performance-aware delivery.</li>
+                <li>Worked across ecommerce, hospitality, and automotive-style user experiences.</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h3>Frontend Project Development</h3>
+              <div class="resume-meta">2021 - 2023</div>
+              <ul>
+                <li>Developed interface projects to sharpen UI craft, layout systems, and interaction design.</li>
+                <li>Strengthened practical skills in JavaScript, CSS architecture, and reusable component thinking.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Selected Projects</h2>
+            <div class="resume-item">
+              <h3>AnimateCart Website</h3>
+              <ul>
+                <li>Created a modern ecommerce interface with product browsing, account flows, and checkout-oriented structure.</li>
+                <li>Stack: JavaScript, CSS Grid, Bootstrap, Payment API integration.</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h3>Luxurious Restaurant App</h3>
+              <ul>
+                <li>Built a refined hospitality experience with elegant presentation, smooth browsing flow, and strong visual direction.</li>
+                <li>Stack: JavaScript, CSS Grid, Bootstrap.</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h3>Veloz Cars App</h3>
+              <ul>
+                <li>Designed a premium dealership interface centered around inventory discovery, filtering, and sleek presentation.</li>
+                <li>Stack: JavaScript, CSS Grid, Bootstrap, API integration.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside>
+          <section>
+            <h2>Core Skills</h2>
+            <div class="pill-grid">
+              <span class="pill">HTML/CSS</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">React</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">MongoDB</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">Next.js</span>
+              <span class="pill">Tailwind CSS</span>
+            </div>
+          </section>
+
+          <section>
+            <h2>Tools</h2>
+            <div class="pill-grid">
+              <span class="pill">Git</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">Figma</span>
+              <span class="pill">Firebase</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">Vercel</span>
+              <span class="pill">Netlify</span>
+            </div>
+          </section>
+
+          <section>
+            <h2>Strengths</h2>
+            <ul>
+              <li>Responsive design and mobile-first layout thinking</li>
+              <li>Interface polish and conversion-aware design decisions</li>
+              <li>Performance-minded frontend implementation</li>
+              <li>Practical product communication and delivery</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Availability</h2>
+            <p class="small-note">Open to freelance projects, collaborations, and thoughtful full-time opportunities.</p>
+          </section>
+        </aside>
+      </div>
+    </article>
+  </div>
+</body>
+
+</html>
